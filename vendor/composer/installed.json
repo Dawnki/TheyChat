@@ -1,0 +1,34 @@
+[
+    {
+        "name": "eaglewu/swoole-ide-helper",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/eaglewu/swoole-ide-helper.git",
+            "reference": "a4bf4e464cb184fd71708578e3cba6609c93e711"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://files.phpcomposer.com/files/eaglewu/swoole-ide-helper/a4bf4e464cb184fd71708578e3cba6609c93e711.zip",
+            "reference": "a4bf4e464cb184fd71708578e3cba6609c93e711",
+            "shasum": ""
+        },
+        "time": "2017-08-14T04:00:11+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Swoole\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "eaglewu",
+                "email": "eaglewu@gmail.com"
+            }
+        ],
+        "description": "Swoole 在IDE下自动识别类、函数、宏，自动补全函数名"
+    }
+]
