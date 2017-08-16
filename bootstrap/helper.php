@@ -55,7 +55,7 @@ if (!function_exists('writeLog')) {
 
 if (!function_exists('app')) {
     /**
-     * Get the available container instance.
+     *  从ioc容器获取对象
      *
      * @param  string $abstract
      * @param  array $parameters
@@ -69,5 +69,19 @@ if (!function_exists('app')) {
         return empty($parameters)
             ? $GLOBALS['container']->make($abstract)
             : $GLOBALS['container']->makeWith($abstract, $parameters);
+    }
+}
+
+if (!function_exists('config')) {
+    /**
+     *  获取配置文件
+     * @param $key
+     * @return mixed
+     */
+    function config($key)
+    {
+        $filename = ROOT . '/config/' . $key . '.php';
+        $arr = require_once $filename;
+        return $arr;
     }
 }
