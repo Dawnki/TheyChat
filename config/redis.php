@@ -7,5 +7,12 @@
  */
 
 return [
+    //redis服务器ip
+    'REDIS_IP' => '127.0.0.1',
+    //redis服务器端口
+    'REDIS_PORT' => '6379',
+    //redis模块
+    'MODULE' => [
 
+    ]
 ];
