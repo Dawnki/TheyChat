@@ -12,13 +12,13 @@ $container = new \Illuminate\Container\Container();
 $container->singleton('SERVER', \App\Server::class);
 
 //bind CallBack function
-$container->bind('close',\App\callback\onClose::class);
-$container->bind('connect',\App\callback\onConnect::class);
-$container->bind('finish',\App\callback\onFinish::class);
-$container->bind('receive',\App\callback\onReceive::class);
-$container->bind('start',\App\callback\onStart::class);
-$container->bind('task',\App\callback\onTask::class);
-$container->bind('WorkStart',\App\callback\onWorkStart::class);
+$container->singleton('close',\App\callback\onClose::class);
+$container->singleton('connect',\App\callback\onConnect::class);
+$container->singleton('finish',\App\callback\onFinish::class);
+$container->singleton('receive',\App\callback\onReceive::class);
+$container->singleton('start',\App\callback\onStart::class);
+$container->singleton('task',\App\callback\onTask::class);
+$container->singleton('WorkStart',\App\callback\onWorkStart::class);
 
 
 return $container;
