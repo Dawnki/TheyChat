@@ -11,7 +11,7 @@ namespace App\callback;
 
 class onStart
 {
-    public static function run($server)
+    public function run($server)
     {
         logger('Server is starting!');
     }

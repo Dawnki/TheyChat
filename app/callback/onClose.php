@@ -11,7 +11,7 @@ namespace App\callback;
 
 class onClose
 {
-    public static function run($server, $fd, $reactor_id)
+    public function run($server, $fd, $reactor_id)
     {
 
     }

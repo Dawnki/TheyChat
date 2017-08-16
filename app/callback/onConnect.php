@@ -11,7 +11,7 @@ namespace App\callback;
 
 class onConnect
 {
-    public static function run($server, $fd, $from_id)
+    public function run($server, $fd, $from_id)
     {
 
     }

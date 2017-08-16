@@ -11,7 +11,7 @@ namespace App\callback;
 
 class onWorkStart
 {
-    public static function run($server, $worker_id)
+    public function run($server, $worker_id)
     {
 
     }

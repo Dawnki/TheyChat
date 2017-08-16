@@ -11,7 +11,7 @@ namespace App\callback;
 
 class onReceive
 {
-    public static function run($server, $fd, $reactor_id, $data)
+    public function run($server, $fd, $reactor_id, $data)
     {
 
     }
