@@ -8,11 +8,6 @@
 
 namespace App;
 
-use App\callback\onClose;
-use App\callback\onConnect;
-use App\callback\onReceive;
-use App\callback\onStart;
-use App\callback\onWorkStart;
 use swoole_server;
 
 class Server
@@ -33,11 +28,15 @@ class Server
 
     private function registerCallBack()
     {
-        $this->server->on('start', [onStart::class, 'run']);
-        $this->server->on('connect', [onConnect::class, 'run']);
-        $this->server->on('receive', [onReceive::class, 'run']);
-        $this->server->on('close', [onClose::class, 'run']);
-        $this->server->on('WorkerStart', [onWorkStart::class, 'run']);
+        $method='run';
+        $this->server->on('start', [app('start'), $method]);
+        $this->server->on('connect', [app('connect'), $method]);
+        $this->server->on('receive', [app('receive'), $method]);
+        $this->server->on('close', [app('close'), $method]);
+        $this->server->on('WorkerStart', [app('WorkStart'), $method]);
+        $this->server->on('task', [app('task'), $method]);
+        $this->server->on('finish', [app('finish'), $method]);
+
     }
 
     private function setting()
@@ -47,7 +46,8 @@ class Server
             'daemonize' => IS_DAEMON,
             'open_mqtt_protocol' => OPEN_MQTT,
             'max_request' => MAX_REQUEST,
-            'dispatch_mode' => DISPATCH_MOD
+            'dispatch_mode' => DISPATCH_MOD,
+            'task_worker_num' => TASK_NUM
         ]);
     }
 }
