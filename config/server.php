@@ -11,6 +11,8 @@ define('SERVER_IP','127.0.0.1');
 define('SERVER_PORT','9999');
 //工作进程数
 define('WORKER_NUM',4);
+//task数
+define('TASK_NUM',2);
 //是否纳入守护进程
 define('IS_DAEMON',false);
 //是否开启MQTT协议
