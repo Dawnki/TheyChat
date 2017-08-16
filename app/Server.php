@@ -14,9 +14,12 @@ class Server
 {
     private $server;
 
+    private $config;
+
     public function __construct()
     {
-        $this->server = new swoole_server(SERVER_IP, SERVER_PORT);
+        $this->config = config('server');
+        $this->server = new swoole_server($this->config['SERVER_IP'], $this->config['SERVER_PORT']);
     }
 
     public function start()
@@ -28,7 +31,7 @@ class Server
 
     private function registerCallBack()
     {
-        $method='run';
+        $method = 'run';
         $this->server->on('start', [app('start'), $method]);
         $this->server->on('connect', [app('connect'), $method]);
         $this->server->on('receive', [app('receive'), $method]);
@@ -42,12 +45,12 @@ class Server
     private function setting()
     {
         $this->server->set([
-            'worker_num' => WORKER_NUM,
-            'daemonize' => IS_DAEMON,
-            'open_mqtt_protocol' => OPEN_MQTT,
-            'max_request' => MAX_REQUEST,
-            'dispatch_mode' => DISPATCH_MOD,
-            'task_worker_num' => TASK_NUM
+            'worker_num' => $this->config['WORKER_NUM'],
+            'daemonize' => $this->config['IS_DAEMON'],
+            'open_mqtt_protocol' => $this->config['OPEN_MQTT'],
+            'max_request' => $this->config['MAX_REQUEST'],
+            'dispatch_mode' => $this->config['DISPATCH_MOD'],
+            'task_worker_num' => $this->config['TASK_NUM']
         ]);
     }
 }
