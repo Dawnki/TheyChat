@@ -85,3 +85,31 @@ if (!function_exists('config')) {
         return $arr;
     }
 }
+
+if (!function_exists('Hash')) {
+    /**
+     *   哈希加密
+     * @param $password
+     * @param null $option
+     * @return bool|string
+     */
+    function Hash($password, $option = null)
+    {
+        return $option ?
+            password_hash($password, PASSWORD_DEFAULT, $option) :
+            password_hash($password, PASSWORD_DEFAULT);
+    }
+}
+
+if (!function_exists('Hash_Check')) {
+    /**
+     *  验证密码
+     * @param $password
+     * @param $hash
+     * @return bool
+     */
+    function Hash_Check($password, $hash)
+    {
+        return password_verify($password, $hash) ? true : false;
+    }
+}
