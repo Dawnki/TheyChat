@@ -12,10 +12,10 @@ require_once __DIR__ . "/../config/server.php";
 
 require_once __DIR__ . "/helper.php";
 
-use App\Server;
+$GLOBALS['container'] = require_once __DIR__ . "/container.php";
 
 //注册对象
 
-$Server = new Server();
+$Server = $GLOBALS['container']->make('SERVER');
 
 $Server->start();

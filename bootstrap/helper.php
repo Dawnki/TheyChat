@@ -6,6 +6,7 @@
  * Time: 上午12:05
  */
 
+
 define('ROOT', __DIR__ . '/..');
 
 if (!function_exists('logger')) {
@@ -49,5 +50,24 @@ if (!function_exists('writeLog')) {
         flock($handle, LOCK_EX);
         @fwrite($handle, (string)$msg . PHP_EOL);
         flock($handle, LOCK_UN);
+    }
+}
+
+if (!function_exists('app')) {
+    /**
+     * Get the available container instance.
+     *
+     * @param  string $abstract
+     * @param  array $parameters
+     * @return mixed
+     */
+    function app($abstract = null, array $parameters = [])
+    {
+        if (is_null($abstract)) {
+            return $GLOBALS['container'];
+        }
+        return empty($parameters)
+            ? $GLOBALS['container']->make($abstract)
+            : $GLOBALS['container']->makeWith($abstract, $parameters);
     }
 }
