@@ -12,7 +12,6 @@ require_once __DIR__ . "/../config/http.php";
 
 require_once __DIR__ . "/../tools/helper.php";
 
-
 $GLOBALS['container'] = require_once __DIR__ . "/../tools/container.php";
 
 //注册对象
