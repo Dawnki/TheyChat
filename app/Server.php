@@ -50,7 +50,8 @@ class Server
             'open_mqtt_protocol' => $this->config['OPEN_MQTT'],
             'max_request' => $this->config['MAX_REQUEST'],
             'dispatch_mode' => $this->config['DISPATCH_MOD'],
-            'task_worker_num' => $this->config['TASK_NUM']
+            'task_worker_num' => $this->config['TASK_NUM'],
+            'log_level' => $this->config['LOG_LEVEL']
         ]);
     }
 }

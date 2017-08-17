@@ -41,6 +41,7 @@ class Http
             'daemonize' => $this->config['IS_DAEMON'],
             'max_request' => $this->config['MAX_REQUEST'],
             'dispatch_mode' => $this->config['DISPATCH_MOD'],
+            'log_level' => $this->config['LOG_LEVEL'],
             //'task_worker_num' => $this->config['TASK_NUM']
         ]);
     }
