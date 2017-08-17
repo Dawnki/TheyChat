@@ -21,5 +21,6 @@ $container->singleton('start',\App\callback\onStart::class);
 $container->singleton('task',\App\callback\onTask::class);
 $container->singleton('WorkStart',\App\callback\onWorkStart::class);
 $container->singleton('request',\App\callback\onRequest::class);
+$container->singleton('storage',\App\Services\Storage\Redis::class);
 
 return $container;

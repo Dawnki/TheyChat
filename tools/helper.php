@@ -86,14 +86,14 @@ if (!function_exists('config')) {
     }
 }
 
-if (!function_exists('Hash')) {
+if (!function_exists('Hash_Create')) {
     /**
      *   哈希加密
      * @param $password
      * @param null $option
      * @return bool|string
      */
-    function Hash($password, $option = null)
+    function Hash_Create($password, $option = null)
     {
         return $option ?
             password_hash($password, PASSWORD_DEFAULT, $option) :
@@ -142,5 +142,16 @@ if (!function_exists('ret')) {
                     'msg' => $msg
                 ]
             ]);
+    }
+}
+
+if (!function_exists('getRoot')) {
+    /**
+     *  获取项目路径
+     * @return string
+     */
+    function getRoot()
+    {
+        return ROOT;
     }
 }
