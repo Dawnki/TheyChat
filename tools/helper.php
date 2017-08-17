@@ -81,7 +81,7 @@ if (!function_exists('config')) {
     function config($key)
     {
         $filename = ROOT . '/config/' . $key . '.php';
-        $arr = require_once $filename;
+        $arr = require $filename;
         return $arr;
     }
 }
