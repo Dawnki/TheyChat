@@ -20,5 +20,7 @@ return [
     //1 轮循 2 固定 3 抢占 4 IP分配 5 UID分配
     'DISPATCH_MOD' => 2,
     //最大请求数
-    'MAX_REQUEST' => 10000
+    'MAX_REQUEST' => 10000,
+    //日志级别
+    'LOG_LEVEL' => 0,
 ];
