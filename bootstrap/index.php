@@ -10,9 +10,9 @@ require_once __DIR__ . "/../vendor/autoload.php";
 
 require_once __DIR__ . "/../config/server.php";
 
-require_once __DIR__ . "/helper.php";
+require_once __DIR__ . "/../tools/helper.php";
 
-$GLOBALS['container'] = require_once __DIR__ . "/container.php";
+$GLOBALS['container'] = require_once __DIR__ . "/../tools/container.php";
 
 //注册对象
 
