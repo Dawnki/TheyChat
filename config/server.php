@@ -10,7 +10,7 @@ return [
     //服务器IP
     'SERVER_IP' => '127.0.0.1',
     //服务器端口
-    'SERVER_PORT' => '9999',
+    'SERVER_PORT' => 9999,
     //工作进程数
     'WORKER_NUM' => 4,
     //task数
