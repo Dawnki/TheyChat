@@ -10,6 +10,7 @@ $container = new \Illuminate\Container\Container();
 
 //bind Server
 $container->singleton('SERVER', \App\Server::class);
+$container->singleton('HTTP',\App\Http::class);
 
 //bind CallBack function
 $container->singleton('close',\App\callback\onClose::class);
@@ -19,6 +20,6 @@ $container->singleton('receive',\App\callback\onReceive::class);
 $container->singleton('start',\App\callback\onStart::class);
 $container->singleton('task',\App\callback\onTask::class);
 $container->singleton('WorkStart',\App\callback\onWorkStart::class);
-
+$container->singleton('request',\App\callback\onRequest::class);
 
 return $container;
