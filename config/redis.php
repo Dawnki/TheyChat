@@ -12,7 +12,8 @@ return [
     //redis服务器端口
     'REDIS_PORT' => '6379',
     //redis模块
-    'MODULE' => [
-
+    'PREFIX' => [
+        'login' => 'TheyChat:Login:ID:',
+        'token' => 'TheyChat:Token:ID:',
     ]
 ];
