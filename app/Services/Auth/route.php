@@ -11,5 +11,6 @@
  */
 return [
     '/login' => 'login',
-    '/register' => 'register'
+    '/register' => 'register',
+    '/logout' => 'logout'
 ];

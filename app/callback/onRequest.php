@@ -8,6 +8,9 @@
 
 namespace App\callback;
 
+use App\Services\Auth\AuthManage;
+
+
 /**
  *  HTTP服务回调函数
  * Class onRequest
@@ -15,12 +18,20 @@ namespace App\callback;
  */
 class onRequest
 {
+    protected $auth;
+
+    public function __construct(AuthManage $manage)
+    {
+        $this->auth = $manage;
+    }
+
     /**
      * @param $request \swoole_http_request
      * @param $response \swoole_http_response
      */
-    public function run($request,$response)
+    public function run($request, $response)
     {
-        $response->end('hello async http!');
+        //logger('Receive a Request!');
+        $this->auth->bootstrap($request, $response);
     }
 }

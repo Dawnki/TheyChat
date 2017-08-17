@@ -34,10 +34,13 @@ class Execute
         $password = $request['password'];
         $prefix = $this->redis_config['PREFIX']['login'];
         $hash = $this->storage->get($prefix . $userId);
+
         if (Hash_Check($password, $hash)) {
+
             $prefix = $this->redis_config['PREFIX']['token'];
             $token = Hash_Create($password . time());
             $this->storage->set($prefix . $userId, $token);
+
             $this->manage->Response(
                 ret(['Token' => $token], true), 200
             );
@@ -72,7 +75,23 @@ class Execute
 
     public function logout()
     {
-
+        $request = $this->manage->jsonData;
+        if (!isset($request['userId']) || !isset($request['token'])) {
+            $this->manage->Response(ret('账号或token缺失!', false, 500), 500);
+            return;
+        }
+        $userId = $request['userId'];
+        $token = $request['token'];
+        $prefix = $this->redis_config['PREFIX']['token'];
+        $getToken = $this->storage->get($prefix . $userId);
+        if ($token != $getToken) {
+            $this->manage->Response(ret('Token不对!', false, 403), 403);
+            return;
+        } else {
+            $this->storage->del($prefix . $userId);
+            $this->manage->Response(ret('登出成功!', true), 200);
+            return;
+        }
     }
 
 }
