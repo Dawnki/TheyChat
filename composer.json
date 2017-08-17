@@ -8,6 +8,7 @@
         }
     },
     "require": {
-        "illuminate/container": "^5.4"
+        "illuminate/container": "^5.4",
+        "predis/predis": "1.0.0"
     }
 }

@@ -11,6 +11,10 @@ class ComposerStaticInit8391aeaf72245ff608e7cb5c81aaff2e
         array (
             'Swoole\\' => 7,
         ),
+        'P' => 
+        array (
+            'Predis\\' => 7,
+        ),
         'I' => 
         array (
             'Illuminate\\Contracts\\' => 21,
@@ -26,6 +30,10 @@ class ComposerStaticInit8391aeaf72245ff608e7cb5c81aaff2e
         'Swoole\\' => 
         array (
             0 => __DIR__ . '/..' . '/eaglewu/swoole-ide-helper/src',
+        ),
+        'Predis\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/predis/predis/src',
         ),
         'Illuminate\\Contracts\\' => 
         array (

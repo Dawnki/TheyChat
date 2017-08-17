@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Swoole\\' => array($vendorDir . '/eaglewu/swoole-ide-helper/src'),
+    'Predis\\' => array($vendorDir . '/predis/predis/src'),
     'Illuminate\\Contracts\\' => array($vendorDir . '/illuminate/contracts'),
     'Illuminate\\Container\\' => array($vendorDir . '/illuminate/container'),
     'App\\' => array($baseDir . '/app'),
