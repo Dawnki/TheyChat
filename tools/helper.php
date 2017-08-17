@@ -113,3 +113,34 @@ if (!function_exists('Hash_Check')) {
         return password_verify($password, $hash) ? true : false;
     }
 }
+
+if (!function_exists('toJson')) {
+    /**
+     *  将字符串转为json
+     * @param $content mixed
+     * @return string
+     */
+    function toJson($content)
+    {
+        return json_encode($content, JSON_UNESCAPED_UNICODE);
+    }
+}
+
+if (!function_exists('ret')) {
+    function ret($msg, $status = false, $err_code = null)
+    {
+        return $status ?
+            toJson([
+                'status' => 1,
+                'err' => 'OK!',
+                'content' => $msg
+            ]) :
+            toJson([
+                'status' => 0,
+                'err' => [
+                    'code' => $err_code,
+                    'msg' => $msg
+                ]
+            ]);
+    }
+}
