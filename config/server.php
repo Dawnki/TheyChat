@@ -14,7 +14,7 @@ return [
     //工作进程数
     'WORKER_NUM' => 4,
     //task数
-    'TASK_NUM' => 2,
+    'TASK_NUM' => 5,
     //是否纳入守护进程
     'IS_DAEMON' => false,
     //是否开启MQTT协议
