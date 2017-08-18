@@ -52,6 +52,7 @@ class Connect extends abstractAction
         $this->checkProtocol();
         $this->checkFlag();
         $this->checkToken();
+        //@todo 建立userId-fd 以及 fd-userId  用于检验权限!!
         $this->store();  //验证权限成功后 建立fd与用户名的关联
         $this->Connask();
     }
