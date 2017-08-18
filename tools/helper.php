@@ -155,3 +155,38 @@ if (!function_exists('getRoot')) {
         return ROOT;
     }
 }
+
+if (!function_exists('printstr')) {
+    /**
+     * @param $string
+     */
+    function printstr($string)
+    {
+        $strlen = strlen($string);
+        for ($j = 0; $j < $strlen; $j++) {
+            $num = ord($string{$j});
+            if ($num > 31)
+                $chr = $string{$j}; else $chr = " ";
+            printf("%4d: %08b : 0x%02x : %s \n", $j, $num, $num, $chr);
+        }
+    }
+}
+
+if (!function_exists('ASCLL2INT')) {
+    /**
+     *  多位Ascll码转整形  获取报文中各种长度专用
+     * @param $str
+     * @param $start
+     * @param $len
+     * @return int
+     */
+    function ASCCLL2INT($str,$start,$len)
+    {
+        $ascll = substr($str, $start, $len);  //长度的ascll码
+        $len = "";
+        for ($i = 0; $i < strlen($ascll); $i++) {
+            $len .= ord($ascll[$i]);
+        }
+        return (int)$len;
+    }
+}
