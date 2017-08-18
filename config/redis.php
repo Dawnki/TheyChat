@@ -16,5 +16,6 @@ return [
         'login' => 'TheyChat:Login:ID:',
         'token' => 'TheyChat:Token:ID:',
         'connection' => 'TheyChat:Connection:ID:',
+        'fd_connection' => 'TheyChat:Connection:FD:',
     ]
 ];
