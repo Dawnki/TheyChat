@@ -13,6 +13,7 @@ class Disconnect extends abstractAction
 {
     public function handle()
     {
-
+        logger("fd:{$this->manage->fd} 发起了断连操作,执行断连!");
+        $this->manage->server->close($this->manage->fd);
     }
 }
