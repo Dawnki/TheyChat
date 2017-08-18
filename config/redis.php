@@ -15,5 +15,6 @@ return [
     'PREFIX' => [
         'login' => 'TheyChat:Login:ID:',
         'token' => 'TheyChat:Token:ID:',
+        'connection' => 'TheyChat:Connection:ID:',
     ]
 ];
