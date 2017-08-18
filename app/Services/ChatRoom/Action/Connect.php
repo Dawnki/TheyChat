@@ -33,11 +33,11 @@ class Connect extends abstractAction
         $identity_len = ASCCLL2INT($raw, $offset, 2);
         $this->clientIdentity = substr($this->manage->data, $offset + 2, $identity_len);
 
-        $offset = $offset + 2 + $identity_len;
+        $offset += 2 + $identity_len;
         $userId_len = ASCCLL2INT($raw, $offset, 2);
         $this->userId = substr($this->manage->data, $offset + 2, $userId_len);
 
-        $offset = $offset + 2 + $userId_len;
+        $offset += 2 + $userId_len;
         $token_len = ASCCLL2INT($raw, $offset, 2);
         $this->token = substr($this->manage->data, $offset + 2, $token_len);
 
@@ -45,14 +45,14 @@ class Connect extends abstractAction
     }
 
     /**
-     *  获取用户名 密码
+     *  处理连接流程
      */
     public function handle()
     {
         $this->checkProtocol();
         $this->checkFlag();
         $this->checkToken();
-        $this->store();
+        $this->store();  //验证权限成功后 建立fd与用户名的关联
         $this->Connask();
     }
 
@@ -108,7 +108,7 @@ class Connect extends abstractAction
      */
     private function Connask()
     {
-        $response=chr(32) . chr(2) . chr(0) . chr(0);
-        $this->manage->server->send($this->manage->fd,$response);
+        $response = chr(32) . chr(2) . chr(0) . chr(0);
+        $this->manage->server->send($this->manage->fd, $response);
     }
 }
