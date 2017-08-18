@@ -13,6 +13,6 @@ class onClose
 {
     public function run($server, $fd, $reactor_id)
     {
-
+        logger('fd:'.$fd.' has been disconnected!');
     }
 }

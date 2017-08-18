@@ -11,8 +11,8 @@ namespace App\callback;
 
 class onFinish
 {
-    public function run($server,$task_id,$data)
+    public function run($server, $task_id, $data)
     {
-
+        logger("群发状态: {$data}");
     }
 }
