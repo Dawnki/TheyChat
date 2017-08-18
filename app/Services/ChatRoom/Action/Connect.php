@@ -21,6 +21,8 @@ class Connect extends abstractAction
 
     protected $token;
 
+    protected $storage;
+
     public function __construct(ChatManage $manage)
     {
         parent::__construct($manage);
@@ -38,6 +40,8 @@ class Connect extends abstractAction
         $offset = $offset + 2 + $userId_len;
         $token_len = ASCCLL2INT($raw, $offset, 2);
         $this->token = substr($this->manage->data, $offset + 2, $token_len);
+
+        $this->storage = app('storage');
     }
 
     /**
@@ -45,28 +49,66 @@ class Connect extends abstractAction
      */
     public function handle()
     {
-        echo $this->checkFlag();
+        $this->checkProtocol();
+        $this->checkFlag();
+        $this->checkToken();
+        $this->store();
+        $this->Connask();
     }
 
     /**
-     *  获取协议名称
-     * @return bool|string
+     *  检查协议
+     * @throws \Exception
      */
-    public function getProtocolName()
+    private function checkProtocol()
     {
-        return substr($this->manage->data, 4, 4);
+        $protocol = substr($this->manage->data, 4, 4);
+        if (strtolower($protocol) != 'mqtt') {
+            throw  new \Exception('协议出错,不是mqtt协议');
+        }
     }
 
     /**
      *  检查连接标志 去除遗嘱信息
      * @throws Exception
      */
-    public function checkFlag()
+    private function checkFlag()
     {
         $raw = $this->manage->data;
         //(194)二进制 => 1100 0010
         if (ASCCLL2INT($raw, 9, 1) != 194) {
             throw new Exception('连接标志出错,不是1100 0010');
         }
+    }
+
+    /**
+     *  检查token
+     * @throws Exception
+     */
+    private function checkToken()
+    {
+        $prefix = config('redis')['PREFIX']['token'];
+        $token = $this->storage->get($prefix . $this->userId);
+        if ($this->token != $token) {
+            throw new Exception('Token验证失败!');
+        }
+    }
+
+    /**
+     *  存储用户与fd的关系
+     */
+    private function store()
+    {
+        $prefix = config('redis')['PREFIX']['connection'];
+        $this->storage->set($prefix . $this->userId, $this->manage->fd);
+    }
+
+    /**
+     *  返回连接确认
+     */
+    private function Connask()
+    {
+        $response=chr(32) . chr(2) . chr(0) . chr(0);
+        $this->manage->server->send($this->manage->fd,$response);
     }
 }
