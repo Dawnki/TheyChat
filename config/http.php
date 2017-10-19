@@ -8,7 +8,7 @@
 
 return [
     //服务器IP
-    'SERVER_IP' => '127.0.0.1',
+    'SERVER_IP' => '0.0.0.1',
     //服务器端口
     'SERVER_PORT' => 9501,
     //工作进程数
