@@ -48,8 +48,10 @@ class ChatManage
         try {
             $this->parseType();
             $this->dispatch();
+            $server->send($fd,'成功');
         } catch (\Exception $exception) {
             logger($exception->getMessage(), 'Exception');
+            $server->send($fd,'错误:'.$exception->getMessage());
             //@todo 可补充断连操作
         }
     }
